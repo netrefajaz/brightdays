@@ -51,3 +51,6 @@ footer { margin-top: 48px; color: var(--muted); font-size: 14px; }
   tr { border-top: 1px solid var(--border); padding: 10px 0; }
   td:first-child { font-weight: 700; }
 }
+
+.get { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; margin: 4px 0 28px; }
+.get-note { color: var(--muted); font-size: 15px; }
