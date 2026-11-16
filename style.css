@@ -34,6 +34,7 @@ a { color: var(--teal); }
 .card.soft { background: var(--teal-soft); border-color: transparent; }
 .card.crisis { background: #FBEFE6; border-color: transparent; }
 .card h2, .card h3 { margin-top: 0; }
+.card p + h3 { margin-top: 18px; }
 ul { padding-left: 22px; }
 li { margin: 4px 0; }
 table { width: 100%; border-collapse: collapse; font-size: 15px; }
