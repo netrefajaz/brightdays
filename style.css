@@ -55,3 +55,9 @@ footer { margin-top: 48px; color: var(--muted); font-size: 14px; }
 
 .get { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; margin: 4px 0 28px; }
 .get-note { color: var(--muted); font-size: 15px; }
+
+.shots { margin: 0 -16px 8px; }
+.shots ul { list-style: none; margin: 0; padding: 4px 16px 14px; display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding: 16px; -webkit-overflow-scrolling: touch; }
+.shots li { flex: none; margin: 0; scroll-snap-align: start; }
+.shots img { display: block; width: 200px; height: auto; border-radius: 18px; box-shadow: 0 6px 18px rgba(28, 42, 40, .12); }
+@media (min-width: 720px) { .shots img { width: 220px; } }
