@@ -38,6 +38,29 @@
       <li><img src="shots/10-pride-en.jpg" width="480" height="1043" loading="lazy" alt="Today screen in a pride flag color theme."></li>
     </ul>
   </section>
+  <div class="shots-nav">
+    <button type="button" class="shots-prev" aria-label="Previous screenshot" disabled>&#8249;</button>
+    <span>Swipe to see more</span>
+    <button type="button" class="shots-next" aria-label="Next screenshot">&#8250;</button>
+  </div>
+  <script>
+  (function () {
+    var row = document.querySelector('.shots ul');
+    var prev = document.querySelector('.shots-prev');
+    var next = document.querySelector('.shots-next');
+    if (!row || !prev || !next) return;
+    function step() { var li = row.querySelector('li'); return li ? li.getBoundingClientRect().width + 12 : 260; }
+    function update() {
+      prev.disabled = row.scrollLeft < 8;
+      next.disabled = row.scrollLeft + row.clientWidth > row.scrollWidth - 8;
+    }
+    prev.addEventListener('click', function () { row.scrollBy({ left: -step(), behavior: 'smooth' }); });
+    next.addEventListener('click', function () { row.scrollBy({ left: step(), behavior: 'smooth' }); });
+    row.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+  })();
+  </script>
 
   <div class="card">
     <h2>Free for everyone</h2>
