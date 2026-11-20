@@ -80,3 +80,7 @@ footer { margin-top: 48px; color: var(--muted); font-size: 14px; }
 .sticky-get .button { padding: 10px 20px; }
 @media (min-width: 721px) { .sticky-get { display: none; } }
 @media (prefers-reduced-motion: reduce) { .sticky-get { transition: none; } }
+
+.badge { display: inline-block; line-height: 0; border-radius: 9px; }
+.badge img { display: block; height: 48px; width: auto; }
+.badge:focus-visible { outline: 3px solid var(--apricot); outline-offset: 3px; }
