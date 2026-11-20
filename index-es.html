@@ -23,10 +23,11 @@
   <h1>Un acompañamiento constante para tu recuperación.</h1>
   <p class="lede">Bright Days te ayuda a superar las ansias, notar tus patrones, encontrar reuniones y celebrar cada logro. Sin cuentas, sin anuncios, y todo se queda en privado en tu teléfono.</p>
   <p class="get"><a class="button" href="https://apps.apple.com/app/apple-store/id6833178858?pt=129779334&amp;ct=WebsiteES&amp;mt=8">Descargar en el App Store</a> <span class="get-note">Gratis para iPhone.</span></p>
+  <p class="sale" hidden><strong>Black Friday:</strong> Bright Days Plus tiene 50% de descuento hasta el lunes.</p>
 
   <section class="shots" aria-label="Capturas de pantalla de la app">
     <ul>
-      <li><img src="shots/01-craving-es.jpg" width="480" height="1043" loading="eager" alt="Pantalla de ansias: "Este sentimiento va a pasar", un círculo de respiración con temporizador de 15 minutos, cuatro ritmos de respiración y botones para llamar o escribir al 988."></li>
+      <li><img src="shots/01-craving-es.jpg" width="480" height="1043" loading="eager" alt="Pantalla de ansias: &ldquo;Este sentimiento va a pasar&rdquo;, un círculo de respiración con temporizador de 15 minutos, cuatro ritmos de respiración y botones para llamar o escribir al 988."></li>
       <li><img src="shots/02-today-es.jpg" width="480" height="1043" loading="eager" alt="Pantalla de hoy con el contador de días, el dinero ahorrado y un resumen de la semana."></li>
       <li><img src="shots/03-meetings-es.jpg" width="480" height="1043" loading="lazy" alt="Buscador de reuniones de AA y NA cerca de ti."></li>
       <li><img src="shots/04-health-es.jpg" width="480" height="1043" loading="lazy" alt="Cómo sana tu cuerpo: una línea de tiempo para el alcohol con las etapas que ya alcanzaste."></li>
@@ -65,11 +66,11 @@
   <div class="card">
     <h2>Gratis para todas las personas</h2>
     <ul>
-      <li>Apoyo para las ansias con cuatro ritmos de respiración, surfear la ola, ejercicios para volver al presente, una revisión de lo básico y tu círculo de apoyo a un toque</li>
+      <li>Apoyo para las ansias con cuatro ritmos de respiración, surfear la ola guiado, respiración cuadrada y respiración 4 7 8, ejercicios para volver al presente, una revisión de lo básico y tu círculo de apoyo a un toque</li>
       <li>Un camino amable y sin juicios para retomar si tienes un tropiezo</li>
       <li>Un plan de prevención de recaídas con tus razones, tu círculo de apoyo y tus señales de alerta</li>
       <li>Registros diarios, intenciones, gratitud y tarjetas para mirar atrás</li>
-      <li>Logros y celebraciones, y widgets en tu pantalla de inicio para tu contador y ayuda con las ansias</li>
+      <li>Logros y celebraciones, además de widgets en tu pantalla de inicio y tu pantalla bloqueada para tu contador y ayuda con las ansias</li>
       <li>Búsqueda de reuniones de AA y NA, cerca de ti y en línea</li>
       <li>Un diario privado con preguntas diarias</li>
       <li>El Paso 1 del trabajo de pasos</li>
@@ -94,9 +95,43 @@
     <p>Filtros y estadísticas de reuniones y registros de asistencia en PDF; paquetes de preguntas para el diario, búsqueda y exportación en PDF; y copias de seguridad para un teléfono nuevo.</p>
   </div>
 
+  <div class="cta-end">
+    <!-- ABOUT -->
+    <p class="sale" hidden><strong>Black Friday:</strong> Plus tiene 50% de descuento hasta el lunes.</p>
+    <p class="get-end"><a class="button" href="https://apps.apple.com/app/apple-store/id6833178858?pt=129779334&amp;ct=WebsiteES&amp;mt=8">Descargar en el App Store</a> <span class="get-note">Gratis para iPhone. Plus es opcional.</span></p>
+  </div>
+
   <p>¿Tienes preguntas? <a href="support-es.html">Visita la página de soporte</a> o escribe a <a href="mailto:brightdaysapp@gmail.com">brightdaysapp@gmail.com</a>.</p>
 
   <footer>Bright Days no está afiliada ni respaldada por ninguna fraternidad de recuperación. No es atención médica. En una crisis en Estados Unidos, llama al <a href="tel:988">988</a> (marca 2 para español) o envía AYUDA por mensaje de texto al 988.</footer>
 </div>
+<div class="sticky-get" aria-hidden="true">
+  <span>Bright Days <small>Gratis para iPhone</small></span>
+  <a class="button" tabindex="-1" href="https://apps.apple.com/app/apple-store/id6833178858?pt=129779334&amp;ct=WebsiteES&amp;mt=8">Descargar</a>
+</div>
+  <script>
+  (function () {
+    // Black Friday: mostrar the sale lines from Nov 26 through Nov 30 (the phone's own time zone).
+    var now = new Date();
+    if (now >= new Date(2026, 10, 26) && now < new Date(2026, 11, 1)) {
+      document.querySelectorAll('.sale').forEach(function (el) { el.hidden = false; });
+    }
+    // En teléfonos, a download bar appears once the top button scrolls away, and hides at the bottom button.
+    var bar = document.querySelector('.sticky-get');
+    var top = document.querySelector('.get');
+    var end = document.querySelector('.cta-end');
+    if (!bar || !top || !end || !('IntersectionObserver' in window)) return;
+    var seen = { top: true, end: false };
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { seen[e.target === top ? 'top' : 'end'] = e.isIntersecting; });
+      var show = !seen.top && !seen.end;
+      bar.classList.toggle('show', show);
+      bar.setAttribute('aria-hidden', show ? 'false' : 'true');
+      bar.querySelector('a').tabIndex = show ? 0 : -1;
+    });
+    io.observe(top);
+    io.observe(end);
+  })();
+  </script>
 </body>
 </html>

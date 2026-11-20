@@ -23,10 +23,11 @@
   <h1>A steady companion for your recovery.</h1>
   <p class="lede">Bright Days helps you get through cravings, notice your patterns, find meetings, and celebrate every milestone. No accounts, no ads, and everything stays private on your phone.</p>
   <p class="get"><a class="button" href="https://apps.apple.com/app/apple-store/id6833178858?pt=129779334&amp;ct=Website&amp;mt=8">Download on the App Store</a> <span class="get-note">Free for iPhone.</span></p>
+  <p class="sale" hidden><strong>Black Friday:</strong> Bright Days Plus is 50% off through Monday.</p>
 
   <section class="shots" aria-label="App screenshots">
     <ul>
-      <li><img src="shots/01-craving-en.jpg" width="480" height="1043" loading="eager" alt="Craving screen: "This feeling will pass," a breathing circle with a 15 minute timer, four breathing patterns, and buttons to call or text 988."></li>
+      <li><img src="shots/01-craving-en.jpg" width="480" height="1043" loading="eager" alt="Craving screen: &ldquo;This feeling will pass,&rdquo; a breathing circle with a 15 minute timer, four breathing patterns, and buttons to call or text 988."></li>
       <li><img src="shots/02-today-en.jpg" width="480" height="1043" loading="eager" alt="Today screen with a sober day counter, money saved, and the week at a glance."></li>
       <li><img src="shots/03-meetings-en.jpg" width="480" height="1043" loading="lazy" alt="Meeting finder showing AA and NA meetings near you."></li>
       <li><img src="shots/04-health-en.jpg" width="480" height="1043" loading="lazy" alt="How your body heals: a timeline for alcohol showing which stages you have reached."></li>
@@ -65,11 +66,11 @@
   <div class="card">
     <h2>Free for everyone</h2>
     <ul>
-      <li>Craving support with four breathing patterns, urge surfing, grounding, a HALT check, and your support circle one tap away</li>
+      <li>Craving support with four breathing patterns, guided urge surfing, box breathing and 4 7 8 breathing, grounding, a HALT check, and your support circle one tap away</li>
       <li>A gentle, judgment free path back if you slip</li>
       <li>A relapse prevention plan with your reasons, support circle, and warning signs</li>
       <li>Daily check ins, intentions, gratitude, and look back cards</li>
-      <li>Milestones and celebrations, and Home Screen widgets for your count and craving help</li>
+      <li>Milestones and celebrations, plus Home Screen and Lock Screen widgets for your count and craving help</li>
       <li>AA and NA meeting search, near you and online</li>
       <li>A private journal with daily prompts</li>
       <li>Step 1 of step work</li>
@@ -94,9 +95,43 @@
     <p>Meeting filters, stats, and PDF attendance records; journal prompt packs, search, and PDF export; and backups for a new phone.</p>
   </div>
 
+  <div class="cta-end">
+    <!-- ABOUT -->
+    <p class="sale" hidden><strong>Black Friday:</strong> Plus is 50% off through Monday.</p>
+    <p class="get-end"><a class="button" href="https://apps.apple.com/app/apple-store/id6833178858?pt=129779334&amp;ct=Website&amp;mt=8">Download on the App Store</a> <span class="get-note">Free for iPhone. Plus is optional.</span></p>
+  </div>
+
   <p>Questions? <a href="support.html">Visit support</a> or email <a href="mailto:brightdaysapp@gmail.com">brightdaysapp@gmail.com</a>.</p>
 
   <footer>Bright Days isn't affiliated with or endorsed by any recovery fellowship. It isn't medical care. In crisis in the US, call or text <a href="tel:988">988</a>.</footer>
 </div>
+<div class="sticky-get" aria-hidden="true">
+  <span>Bright Days <small>Free for iPhone</small></span>
+  <a class="button" tabindex="-1" href="https://apps.apple.com/app/apple-store/id6833178858?pt=129779334&amp;ct=Website&amp;mt=8">Download</a>
+</div>
+  <script>
+  (function () {
+    // Black Friday: show the sale lines from Nov 26 through Nov 30 (the phone's own time zone).
+    var now = new Date();
+    if (now >= new Date(2026, 10, 26) && now < new Date(2026, 11, 1)) {
+      document.querySelectorAll('.sale').forEach(function (el) { el.hidden = false; });
+    }
+    // On phones, a download bar appears once the top button scrolls away, and hides at the bottom button.
+    var bar = document.querySelector('.sticky-get');
+    var top = document.querySelector('.get');
+    var end = document.querySelector('.cta-end');
+    if (!bar || !top || !end || !('IntersectionObserver' in window)) return;
+    var seen = { top: true, end: false };
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { seen[e.target === top ? 'top' : 'end'] = e.isIntersecting; });
+      var show = !seen.top && !seen.end;
+      bar.classList.toggle('show', show);
+      bar.setAttribute('aria-hidden', show ? 'false' : 'true');
+      bar.querySelector('a').tabIndex = show ? 0 : -1;
+    });
+    io.observe(top);
+    io.observe(end);
+  })();
+  </script>
 </body>
 </html>
